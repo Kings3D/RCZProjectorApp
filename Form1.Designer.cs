@@ -30,8 +30,9 @@ namespace RCZProjectorApp
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grid1 = new System.Windows.Forms.DataGridView();
             this.viewInProjector = new System.Windows.Forms.DataGridViewButtonColumn();
             this.addToList = new System.Windows.Forms.DataGridViewLinkColumn();
@@ -60,12 +61,18 @@ namespace RCZProjectorApp
             this.body = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnShowNotification = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnShowAllNotifications = new System.Windows.Forms.Button();
+            this.cmsBibleDelete = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsNotificationDelete = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.grid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bibleGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridVerse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridChapter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridQuickVerses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridNotifications)).BeginInit();
+            this.cmsBibleDelete.SuspendLayout();
+            this.cmsNotificationDelete.SuspendLayout();
             this.SuspendLayout();
             // 
             // grid1
@@ -130,15 +137,15 @@ namespace RCZProjectorApp
             // 
             this.bibleGrid.AllowUserToAddRows = false;
             this.bibleGrid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.bibleGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.bibleGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.bibleGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.bibleGrid.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bibleGrid.Location = new System.Drawing.Point(336, 74);
@@ -151,6 +158,7 @@ namespace RCZProjectorApp
             this.bibleGrid.Size = new System.Drawing.Size(353, 89);
             this.bibleGrid.TabIndex = 3;
             this.bibleGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BibleGrid_CellClick);
+            this.bibleGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BibleGrid_CellContentClick);
             // 
             // txtBibleSearch
             // 
@@ -256,6 +264,7 @@ namespace RCZProjectorApp
             // gridQuickVerses
             // 
             this.gridQuickVerses.AllowUserToAddRows = false;
+            this.gridQuickVerses.AllowUserToDeleteRows = false;
             this.gridQuickVerses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridQuickVerses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.txtTitle,
@@ -264,19 +273,21 @@ namespace RCZProjectorApp
             this.gridQuickVerses.Location = new System.Drawing.Point(336, 399);
             this.gridQuickVerses.Name = "gridQuickVerses";
             this.gridQuickVerses.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridQuickVerses.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridQuickVerses.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.gridQuickVerses.RowHeadersVisible = false;
             this.gridQuickVerses.RowHeadersWidth = 30;
+            this.gridQuickVerses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridQuickVerses.Size = new System.Drawing.Size(353, 170);
             this.gridQuickVerses.TabIndex = 12;
             this.gridQuickVerses.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridQuickVerses_CellClick);
-            this.gridQuickVerses.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridQuickVerses_CellContentClick);
+            this.gridQuickVerses.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GridQuickVerses__CellMouseUp);
             // 
             // txtTitle
             // 
@@ -315,6 +326,9 @@ namespace RCZProjectorApp
             this.txtNotificationTitle.Size = new System.Drawing.Size(100, 20);
             this.txtNotificationTitle.TabIndex = 14;
             this.txtNotificationTitle.Text = "Title";
+            this.txtNotificationTitle.TextChanged += new System.EventHandler(this.TxtNotificationTitle_TextChanged);
+            this.txtNotificationTitle.GotFocus += new System.EventHandler(this.TxtNotificationTitle_GotFocus);
+            this.txtNotificationTitle.LostFocus += new System.EventHandler(this.TxtNotificationTitle_LostFocus);
             // 
             // txtNotificationBody
             // 
@@ -323,6 +337,9 @@ namespace RCZProjectorApp
             this.txtNotificationBody.Size = new System.Drawing.Size(160, 20);
             this.txtNotificationBody.TabIndex = 15;
             this.txtNotificationBody.Text = "Ziviso";
+            this.txtNotificationBody.TextChanged += new System.EventHandler(this.TxtNotificationBody_TextChanged);
+            this.txtNotificationBody.GotFocus += new System.EventHandler(this.TxtNotificationBody_GotFocus);
+            this.txtNotificationBody.LostFocus += new System.EventHandler(this.TxtNotificationBody_LostFocus);
             // 
             // btnNotificationAdd
             // 
@@ -337,6 +354,7 @@ namespace RCZProjectorApp
             // gridNotifications
             // 
             this.gridNotifications.AllowUserToAddRows = false;
+            this.gridNotifications.AllowUserToDeleteRows = false;
             this.gridNotifications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridNotifications.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.title,
@@ -345,9 +363,12 @@ namespace RCZProjectorApp
             this.gridNotifications.Location = new System.Drawing.Point(706, 76);
             this.gridNotifications.Name = "gridNotifications";
             this.gridNotifications.ReadOnly = true;
+            this.gridNotifications.RowHeadersVisible = false;
+            this.gridNotifications.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridNotifications.Size = new System.Drawing.Size(345, 456);
             this.gridNotifications.TabIndex = 17;
             this.gridNotifications.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridNotifications_CellClick);
+            this.gridNotifications.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GridNotifications__CellMouseUp);
             // 
             // title
             // 
@@ -379,6 +400,34 @@ namespace RCZProjectorApp
             this.btnShowAllNotifications.Text = "Show All Notifications";
             this.btnShowAllNotifications.UseVisualStyleBackColor = true;
             this.btnShowAllNotifications.Click += new System.EventHandler(this.BtnShowAllNotifications_Click);
+            // 
+            // cmsBibleDelete
+            // 
+            this.cmsBibleDelete.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.cmsBibleDelete.Name = "cmsBibleDelete";
+            this.cmsBibleDelete.Size = new System.Drawing.Size(134, 26);
+            this.cmsBibleDelete.Click += new System.EventHandler(this.CmsBibleDelete_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(133, 22);
+            this.toolStripMenuItem1.Text = "Delete Row";
+            // 
+            // cmsNotificationDelete
+            // 
+            this.cmsNotificationDelete.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2});
+            this.cmsNotificationDelete.Name = "cmsNotificationDelete";
+            this.cmsNotificationDelete.Size = new System.Drawing.Size(134, 26);
+            this.cmsNotificationDelete.Click += new System.EventHandler(this.CmsNotificationDelete_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(133, 22);
+            this.toolStripMenuItem2.Text = "Delete Row";
             // 
             // Form1
             // 
@@ -412,6 +461,8 @@ namespace RCZProjectorApp
             ((System.ComponentModel.ISupportInitialize)(this.gridChapter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridQuickVerses)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridNotifications)).EndInit();
+            this.cmsBibleDelete.ResumeLayout(false);
+            this.cmsNotificationDelete.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -447,6 +498,10 @@ namespace RCZProjectorApp
         private System.Windows.Forms.DataGridViewTextBoxColumn body;
         private System.Windows.Forms.DataGridViewButtonColumn btnShowNotification;
         private System.Windows.Forms.Button btnShowAllNotifications;
+        private System.Windows.Forms.ContextMenuStrip cmsBibleDelete;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ContextMenuStrip cmsNotificationDelete;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
     }
 }
 

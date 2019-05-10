@@ -290,8 +290,11 @@ namespace RCZProjectorApp
 
             gridVerse.DataSource = null;
             gridVerse.Enabled = false;
-            txtSearchVerse.Enabled = false;
             btnAddBibleToList.Enabled = false;
+            startingRow = 0;
+            endingRow = 0;
+            cntSelected = 0;
+            selectedRowsPresent = false;
         }
 
         private const string defaultChapterText = "Chapter";
@@ -405,6 +408,11 @@ namespace RCZProjectorApp
             string chapterId = gridChapter.Rows[i].Cells[0].Value.ToString();
 
             loadVerses(bookId, chapterId);
+
+            cntSelected = 0;
+            startingRow = 0;
+            endingRow = 0;
+            selectedRowsPresent = false;
         }
 
         int cntSelected = 0;
@@ -600,9 +608,16 @@ namespace RCZProjectorApp
             }
         }
 
-        private void GridQuickVerses_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void GridQuickVerses__CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
-
+            if (e.Button == MouseButtons.Right)
+            {
+                this.gridQuickVerses.Rows[e.RowIndex].Selected = true;
+                this.qvRowIndex = e.RowIndex;
+                this.gridQuickVerses.CurrentCell = this.gridQuickVerses.Rows[e.RowIndex].Cells[0];
+                this.cmsBibleDelete.Show(this.gridQuickVerses, e.Location);
+                cmsBibleDelete.Show(Cursor.Position);
+            }
         }
 
         private void BtnNotificationAdd_Click(object sender, EventArgs e)
@@ -670,6 +685,74 @@ namespace RCZProjectorApp
             }
             else
                 MessageBox.Show("No Projector Connection");  
+        }
+
+        private void GridNotifications__CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                this.gridNotifications.Rows[e.RowIndex].Selected = true;
+                this.nRowIndex = e.RowIndex;
+                this.gridNotifications.CurrentCell = this.gridNotifications.Rows[e.RowIndex].Cells[0];
+                this.cmsNotificationDelete.Show(this.gridNotifications, e.Location);
+                cmsNotificationDelete.Show(Cursor.Position);
+            }
+        }
+
+        private int qvRowIndex = 0;
+        private int nRowIndex = 0;
+        private void CmsBibleDelete_Click(object sender, EventArgs e)
+        {
+            if (!this.gridQuickVerses.Rows[this.qvRowIndex].IsNewRow)
+            {
+                this.gridQuickVerses.Rows.RemoveAt(this.qvRowIndex);
+            }
+        }
+
+        private void CmsNotificationDelete_Click(object sender, EventArgs e)
+        {
+            if (!this.gridNotifications.Rows[this.nRowIndex].IsNewRow)
+            {
+                this.gridNotifications.Rows.RemoveAt(this.nRowIndex);
+            }
+        }
+
+        private const string defaultNotificationTitleText = "Title";
+        private void TxtNotificationTitle_TextChanged(object sender, EventArgs e)
+        {
+
+        }     
+
+        private void TxtNotificationTitle_GotFocus(object sender, EventArgs e)
+        {
+            txtNotificationTitle.Text = txtNotificationTitle.Text == defaultNotificationTitleText ? string.Empty : txtNotificationTitle.Text;
+        }
+
+        private void TxtNotificationTitle_LostFocus(object sender, EventArgs e)
+        {
+            txtNotificationTitle.Text = txtNotificationTitle.Text == string.Empty ? defaultNotificationTitleText : txtNotificationTitle.Text;
+        }
+
+        private const string defaultNotificationBodyText = "Ziviso";
+
+        private void TxtNotificationBody_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtNotificationBody_GotFocus(object sender, EventArgs e)
+        {
+            txtNotificationBody.Text = txtNotificationBody.Text == defaultNotificationBodyText ? string.Empty : txtNotificationBody.Text;
+        }
+
+        private void TxtNotificationBody_LostFocus(object sender, EventArgs e)
+        {
+            txtNotificationBody.Text = txtNotificationBody.Text == string.Empty ? defaultNotificationBodyText : txtNotificationBody.Text;
+        }
+
+        private void BibleGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
